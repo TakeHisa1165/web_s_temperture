@@ -17,6 +17,8 @@ class Select_File:
             [sg.InputText(font=('メイリオ', 14)), sg.FolderBrowse('開く', font=('メイリオ', 14))],
             [sg.Text('chromedriverの場所を指定してください', size=(50, 1), font=('メイリオ', 14))],
             [sg.InputText(font=('メイリオ', 14)), sg.FilesBrowse('開く', key='File1', font=('メイリオ', 14))],
+            [sg.Text('記録用Excelファイルを選択してください', size=(50, 1), font=('メイリオ', 14))],
+            [sg.InputText(font=('メイリオ', 14)), sg.FilesBrowse('開く', key='File1', font=('メイリオ', 14))],
             [sg.Submit(button_text='設定', font=('メイリオ', 14)), sg.Submit(button_text="閉じる", font=('メイリオ', 14))],
         ]
 
@@ -39,6 +41,8 @@ class Select_File:
                 path_dict["download_path"] = download_path
                 driver_path = values[2]
                 path_dict["driver_path"] = driver_path
+                excel_path = values[3]
+                path_dict["excel_path"] = excel_path
                 csv = w_csv.Write_csv()
                 csv.write_csv(path_dict=path_dict)
 

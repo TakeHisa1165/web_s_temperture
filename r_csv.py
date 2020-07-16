@@ -1,3 +1,7 @@
+"""
+温度記録用プログラムpath.csvの読み込み
+"""
+
 import csv
 import os
 import gui
@@ -9,6 +13,10 @@ class Read_csv:
         pass
 
     def read_csv(self):
+        """
+
+        :return: path.csvから読み込んだファイルpath　フォルダpathを返す
+        """
         os.chdir(os.path.dirname(os.path.abspath(__file__)))
         try:
             with open('path.csv', newline='') as csvfile:
@@ -17,7 +25,8 @@ class Read_csv:
                     logger_path = row["logger_path"]
                     download_path = row["download_path"]
                     driver_path = row["driver_path"]
-                    return logger_path, download_path, driver_path
+                    excel_path = row["excel_path"]
+                    return logger_path, download_path, driver_path, excel_path
         except FileNotFoundError:
             sg.popup_ok('初期設定が必要です。\nラベルチェックファイルと入出庫ファイルを選んでください')
             gui.Select_File()

@@ -7,6 +7,13 @@ class DownLoad:
     def __init__(self):
         pass
     def down_load(self, logger_paht, download_path, driver_path):
+        """
+
+        :param logger_paht: 温度データのhtmlファイルpath
+        :param download_path: ダウンロードしたCSVの保存先path
+        :param driver_path: chromedriverのpath
+        :return: なし
+        """
         download_path = download_path
         rpc_path = download_path.replace("/", "\\")
         download_path = rpc_path
