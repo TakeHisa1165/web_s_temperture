@@ -4,19 +4,20 @@ import xlwings as xw
 import to_excel
 import os
 import PySimpleGUI as sg
+import r_csv
 
 class EditData:
     def __init__(self):
         pass
-    def edit_data(self, download_path):
+
+    def edit_data(self, download_path, excel_path):
         """
 
         :param download_path: ダウンロードフォルダpath
         :return:
         """
         # ダウンロードフォルダのpathの/を\に変更
-        path = download_path + "\\" + "export.csv"
-        # csvファイルの読み込み
+        path = download_path + "\\" + "export.csv"        # csvファイルの読み込み
         data = pd.read_csv(path, skiprows=3)
         # 日付のデータのみリストに格納
         data_to_list = data.set_index('Date')
@@ -38,7 +39,7 @@ class EditData:
             date_df = df[date + " 010:00":date + " 15:00"]
             print(date_df)
             # Excelへ入力
-            te = to_excel.InputToExcel(date_df, excel_path=r"D:\ドキュメント\temperture_file\温度記録.xlsx")
+            te = to_excel.InputToExcel(date_df, excel_path=excel_path)
             te.input_to_excel()
 
 

@@ -18,7 +18,7 @@ class Select_File:
             [sg.Text('chromedriverの場所を指定してください', size=(50, 1), font=('メイリオ', 14))],
             [sg.InputText(font=('メイリオ', 14)), sg.FilesBrowse('開く', key='File1', font=('メイリオ', 14))],
             [sg.Text('記録用Excelファイルを選択してください', size=(50, 1), font=('メイリオ', 14))],
-            [sg.InputText(font=('メイリオ', 14)), sg.FolderBrowse('開く', key='File1', font=('メイリオ', 14))],
+            [sg.InputText(font=('メイリオ', 14)), sg.FilesBrowse('開く', key='File1', font=('メイリオ', 14))],
             [sg.Submit(button_text='設定', font=('メイリオ', 14)), sg.Submit(button_text="閉じる", font=('メイリオ', 14))],
         ]
 
