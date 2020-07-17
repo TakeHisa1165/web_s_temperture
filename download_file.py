@@ -1,6 +1,8 @@
-import subprocess
 from selenium import webdriver
 import time
+import sys
+import os
+import PySimpleGUI as sg
 
 
 class DownLoad:
@@ -17,17 +19,18 @@ class DownLoad:
         download_path = download_path
         rpc_path = download_path.replace("/", "\\")
         download_path = rpc_path
-        # download_dir = r"D:\ドキュメント\temperture_file"
         download_dir = download_path
-
-        print(download_path)
-        print(download_dir)
         chop = webdriver.ChromeOptions()
         prefs = {"download.default_directory" : download_dir}
         chop.add_experimental_option("prefs", prefs)
         chop.add_argument('--ignore-certificate-errors')
+        # htmlファイルの有無を確認
+        if os.path.isfile(logger_paht):
+            pass
+        else:
+            sg.popup_error('データロガーを認識していません。\n接続状態を再確認してください')
+            sys.exit()
         driver = webdriver.Chrome(driver_path, chrome_options=chop)
-        # driver = webdriver.Chrome(driver_path)
         time.sleep(1)
         driver.get(logger_paht)
         time.sleep(1)

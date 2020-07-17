@@ -2,6 +2,8 @@ import pandas as pd
 import datetime as dt
 import xlwings as xw
 import to_excel
+import os
+import PySimpleGUI as sg
 
 class EditData:
     def __init__(self):
@@ -33,14 +35,12 @@ class EditData:
         # 日付リストに入っている日付毎にデータフレームを分割
         # 時間を指定して必要なデータのみを抽出する
         for date in set_list:
-            date_df = df[date + " 08:30":date + " 08:40"]
+            date_df = df[date + " 010:00":date + " 15:00"]
             print(date_df)
             # Excelへ入力
             te = to_excel.InputToExcel(date_df, excel_path=r"D:\ドキュメント\temperture_file\温度記録.xlsx")
             te.input_to_excel()
 
-
-        return date_df
 
 
 
