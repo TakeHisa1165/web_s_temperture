@@ -36,7 +36,7 @@ class EditData:
         # 日付リストに入っている日付毎にデータフレームを分割
         # 時間を指定して必要なデータのみを抽出する
         for date in set_list:
-            date_df = df[date + " 010:00":date + " 15:00"]
+            date_df = df[date + " 11:20":date + " 11:45"]
             print(date_df)
             # Excelへ入力
             te = to_excel.InputToExcel(date_df, excel_path=excel_path)
