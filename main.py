@@ -21,6 +21,3 @@ dlf.down_load(logger_paht=logger_path, download_path=download_path, driver_path=
 # ダウンロードしたcsvファイルを編集
 edt = edit_data.EditData()
 data_frame = edt.edit_data(download_path=download_path, excel_path=excel_path)
-
-
-

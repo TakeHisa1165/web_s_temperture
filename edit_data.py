@@ -6,6 +6,7 @@ import os
 import PySimpleGUI as sg
 import r_csv
 
+
 class EditData:
     def __init__(self):
         pass
@@ -18,7 +19,7 @@ class EditData:
         """
         # ダウンロードフォルダのpathの/を\に変更
         path = download_path + "\\" + "export.csv"        # csvファイルの読み込み
-        data = pd.read_csv(path, skiprows=3)
+        data = pd.read_csv(path, skiprows=3,)
         # 日付のデータのみリストに格納
         data_to_list = data.set_index('Date')
         # 日付リストを集合でユニークリストに変更
@@ -36,17 +37,17 @@ class EditData:
         # 日付リストに入っている日付毎にデータフレームを分割
         # 時間を指定して必要なデータのみを抽出する
         for date in set_list:
-            date_df = df[date + " 11:20":date + " 11:45"]
+            date_df = df[date + " 08:00":date + " 18:00"]
             print(date_df)
             # Excelへ入力
             te = to_excel.InputToExcel(date_df, excel_path=excel_path)
-            te.input_to_excel()
+            # te.input_to_excel()
 
 
 
 
 if __name__ == '__main__':
     edt = EditData()
-    edt.edit_data("D:\\ドキュメント\\temperture_file")
+    edt.edit_data("D:\\ドキュメント\\temperture_file", "D:\\ドキュメント\\temperture_file\\温度記録.xlsx")
 
 
